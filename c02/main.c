@@ -19,13 +19,13 @@ void test00()
     // test for 00
     printf("\ntest 00:\n");
 	char str1[] = "Hello";
-	char str2[] = "Goodbye";
+	char str2[0];
 	ft_strcpy(str2, str1);
     printf("Hello : ");
 	print(str2);
 
     char str3[] = "Hello";
-	char str4[] = "";
+	char str4[0];
 	ft_strcpy(str4, str3);
     printf("<empty> : ");
 	print(str4);
@@ -37,7 +37,7 @@ void test01()
     printf("\ntest 01:\n");
 	char str1[] = "Hello";
 	char str2[] = "Goodbye";
-	ft_strncpy(str2, str1, 6);
+	ft_strncpy(str2, str1, 3);
     printf("Hello : ");
 	print(str2);
 
@@ -48,6 +48,21 @@ void test01()
 	print(str4);
 }
 
+void test02()
+{
+    int o;
+    o = 2;
+    printf("\ntest 02:\n");
+    o = ft_str_is_alpha("abz");
+    printf("1: %d\n", o);
+    o = ft_str_is_alpha("");
+    printf("1: %d\n", o);
+    o = ft_str_is_alpha("09");
+    printf("0: %d\n", o);
+    o = ft_str_is_alpha("*qs-df");
+    printf("0: %d\n", o);
+}
+
 void test03()
 {
     int o;
@@ -56,7 +71,7 @@ void test03()
     o = ft_str_is_numeric("");
     printf("1: %d\n", o);
     o = ft_str_is_numeric("09");
-    printf("0: %d\n", o);
+    printf("1: %d\n", o);
     o = ft_str_is_numeric("*qs-df");
     printf("0: %d\n", o);
 }
@@ -163,6 +178,7 @@ int main(void)
 {
 	test00();
     test01();
+    test02();
     test03();
     test04();
     test05();
@@ -170,5 +186,6 @@ int main(void)
     test07();
     test08();
     test09();
+    printf("\n");
 	return(0);
 }
