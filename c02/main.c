@@ -1,18 +1,6 @@
 #include "./common.h"
 #include <stdio.h>
-
-void print(char *str)
-{
-    int i;
-
-    i = 0;
-    while(str[i] != '\0')
-    {
-        printf("%c", str[i]);
-        i++;
-    }
-    printf("\n");
-}
+#include <assert.h>
 
 void test00()
 {
@@ -21,14 +9,14 @@ void test00()
 	char str1[] = "Hello";
 	char str2[0];
 	ft_strcpy(str2, str1);
-    printf("Hello : ");
-	print(str2);
+    printf("Hello : %s\n", str2);
+    // CAUTION: writing beyond the end of the array is undefined behavior
 
     char str3[] = "Hello";
-	char str4[0];
+	char str4[] = "Goodbye";
 	ft_strcpy(str4, str3);
-    printf("<empty> : ");
-	print(str4);
+    printf("Hello : %s\n", str4);
+
 }
 
 void test01()
@@ -38,14 +26,12 @@ void test01()
 	char str1[] = "Hello";
 	char str2[] = "Goodbye";
 	ft_strncpy(str2, str1, 3);
-    printf("Hello : ");
-	print(str2);
+    printf("Heldbye : %s\n", str2);
 
     char str3[] = "Hello";
-	char str4[] = "";
-	ft_strncpy(str4, str3, 1);
-    printf("<empty> : ");
-	print(str4);
+	char str4[6] = "Aloha";
+	ft_strncpy(str4, str3, 5);
+    printf("Hello : %s\n", str4);
 }
 
 void test02()
@@ -126,19 +112,16 @@ void test07()
 {
     printf("\ntest 07:\n");
     char i[] = "abCdeF";
-    printf("ABCDEF: ");
     ft_strupcase(i);
-    print(i);
+    printf("ABCDEF: %s\n", i);
     
     char j[] = "01234";
     ft_strupcase(j);
-    printf("01234: ");
-    print(j);
+    printf("01234: %s\n", j);
 
     char k[] = " {$^¨}";
     ft_strupcase(k);
-    printf(" {$^¨} : ");
-    print(k);
+    printf(" {$^¨} : %s\n", k);
 }
 
 void test08()
@@ -146,23 +129,20 @@ void test08()
     printf("\ntest 08:\n");
     char h[] = "ZASSF";
     ft_strlowcase(h);
-    printf("zassf: ");
-    print(h);
+    printf("zassf: %s\n", h);
 
     char i[] = "aBcDeF";
-    printf("abcdef: ");
     ft_strlowcase(i);
-    print(i);
+    printf("abcdef: %s\n", i);
+    
     
     char j[] = "01234";
     ft_strlowcase(j);
-    printf("01234: ");
-    print(j);
+    printf("01234: %s\n", j);
 
     char k[] = " {$^¨}";
     ft_strlowcase(k);
-    printf(" {$^¨} : ");
-    print(k);
+    printf(" {$^¨} : %s\n", k);
 }
 
 void test09()
@@ -170,8 +150,7 @@ void test09()
     printf("\ntest 09:\n");
     char h[] = "tHis Has*bEeN+grEat 1uN! ";
     ft_strcapitalize(h);
-    printf("This Has*Been+Great 1un! : ");
-    print(h);
+    printf("This Has*Been+Great 1un! : %s\n", h);
 }
 
 int main(void)
